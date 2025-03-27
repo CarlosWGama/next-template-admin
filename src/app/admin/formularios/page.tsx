@@ -35,8 +35,8 @@ export default function FormulariosPage () {
                     </tr>
                   </thead>
                   <tbody>
-                    { formularios.map((formulario) => (
-                        <tr>
+                    { formularios.map((formulario, index) => (
+                        <tr key={""+index}>
                             <td>
                                 <div className="d-flex px-2 py-1">
                                     <div className="d-flex flex-column justify-content-center">
@@ -45,7 +45,7 @@ export default function FormulariosPage () {
                                 </div>
                             </td>
                         <td className="align-middle">
-                            <Link href={`/admin/formularios/editar/${formulario}`} className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <Link href={`/admin/formularios/editar?id=${formulario}`} className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Abrir Formulário
                             </Link>
                         </td>

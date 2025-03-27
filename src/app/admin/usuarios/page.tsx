@@ -55,8 +55,8 @@ export default function UsuariosPage () {
                     </tr>
                   </thead>
                   <tbody>
-                    { usuarios.map((usuario) => (
-                        <tr>
+                    { usuarios.map((usuario, index) => (
+                        <tr key={""+index}>
                             <td>
                                 <div className="d-flex px-2 py-1">
                                     <div className="d-flex flex-column justify-content-center">

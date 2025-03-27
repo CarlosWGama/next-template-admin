@@ -16,13 +16,16 @@ const UsuarioService = {
                 //Verifica se o usuario não foi excluido do banco
                 const dados = await getDoc(doc(db, 'users', retorno.user.uid));
                 console.log('A');
-                dados.exists(dados.exists())
+                
                 if (dados.exists())
                     return { sucesso: true , usuario: retorno.user}
                 return { sucesso: false };
             
             })
-            .catch(erro => { return { sucesso: false }});
+            .catch(erro => { 
+                console.log(erro)
+                return { sucesso: false }
+            });
     },
 
     /**

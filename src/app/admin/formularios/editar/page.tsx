@@ -1,11 +1,13 @@
 "use client";
 import * as React from 'react';
-import { AdminHeader } from '../../../components';
-import { useFormularioService } from '../../../../../services/formulario';
+import { AdminHeader } from '../../components';
+import { useFormularioService } from '../../../../services/formulario';
 import { Formulario1, Formulario2 } from './forms';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function FormularioEditarPage ({params}: any) {
+
+    const searchParams = useSearchParams()
 
     const formulariosSrv = useFormularioService();
     const [ formulario , setFormulario ] = React.useState<any>(null)
@@ -22,10 +24,13 @@ export default function FormularioEditarPage ({params}: any) {
     }
     // ------------
     const handleBuscar = async () => {
-      //Crie inicialmente os formulários dentro do firebase para ele ter o que buscar, mesmo que não seja os dados reais
-      const form = await formulariosSrv.buscar(params.id[0]);
-      console.log(form);
-      setFormulario(form);
+      const id = searchParams.get('id');
+      if (id) {
+        //Crie inicialmente os formulários dentro do firebase para ele ter o que buscar, mesmo que não seja os dados reais
+        const form = await formulariosSrv.buscar(id);
+        console.log(form);
+        setFormulario(form);
+      }
 
 
     }

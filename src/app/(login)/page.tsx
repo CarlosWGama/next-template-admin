@@ -14,6 +14,7 @@ export default function LoginPage() {
   const [ erro, setErro ] = useState<boolean>(false);
   // =================================================================
   const onSubmit = async ({email, senha}: any) => {
+      console.log(email, senha);
       const { sucesso, usuario } = await usuarioSrv.logar(email, senha);
       setErro(false);
       if (sucesso) {
