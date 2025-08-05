@@ -13,9 +13,10 @@ const UsuarioService = {
     logar: async(email: string, senha: string): Promise<{usuario?:any, sucesso:boolean}> => {
         return signInWithEmailAndPassword(auth, email, senha)
             .then(async (retorno) => { 
+                
                 //Verifica se o usuario não foi excluido do banco
                 const dados = await getDoc(doc(db, 'users', retorno.user.uid));
-                console.log('A');
+                
                 
                 if (dados.exists())
                     return { sucesso: true , usuario: retorno.user}
